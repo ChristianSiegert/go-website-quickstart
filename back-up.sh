@@ -1,6 +1,6 @@
 #!/bin/bash
-# back-up.sh saves a compressed archive of source directory in destination
-# directory.
+# back-up.sh creates a compressed tar file of the specified source directory and
+# saves it in the destination directory.
 set -eu
 
 SOURCE_DIR="$1"
