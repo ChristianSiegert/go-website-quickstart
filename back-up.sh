@@ -6,8 +6,12 @@ set -eu
 SOURCE_DIR="$1"
 DESTINATION_DIR="$2"
 
-if [ ! -d "$DESTINATION_DIR" ]; then
-	echo "Destination does not exist: $DESTINATION_DIR"
+if [ ! -d "$SOURCE_DIR" ]; then
+	echo "Source is not a directory: $SOURCE_DIR";
+	exit 1;
+elif [ ! -d "$DESTINATION_DIR" ]; then
+	echo "Destination is not a directory: $DESTINATION_DIR";
+	exit 1;
 fi
 
 PARENT_DIR=$(dirname "$SOURCE_DIR")
