@@ -1,17 +1,17 @@
 #!/bin/bash
-# build.sh compiles the program for the specified build targets. A build target
-# is a pair consisting of operating system and architecture, separated by a
-# hyphen, e.g. “linux-amd64”. See [1] for a list of supported operating systems
-# and architectures. If no build target is specified, the program is compiled
-# for darwin-amd64 and linux-amd64.
+# Usage:
+#	./build.sh [TARGET...]
+# build.sh compiles the program. If a build target is specified, it must be a
+# pair consisting of operating system and architecture, separated by a hyphen,
+# e.g. “linux-amd64”. See [1] for a list of supported operating systems and
+# architectures. If no build target is specified, the program is compiled for
+# darwin-amd64 and linux-amd64.
 # [1] https://github.com/golang/go/blob/master/src/go/build/syslist.go
 set -eu
 
-PROJECT_DIR="$GOPATH/src/github.com/ChristianSiegert/go-website-quickstart"
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >> /dev/null && pwd)"
 EXECUTABLE_FILENAME=$(basename "$PROJECT_DIR")
-
-cd "$PROJECT_DIR"
-BUILD_DIR="./build"
+BUILD_DIR="$PROJECT_DIR/build"
 
 # Clean build directory
 if [ -d "$BUILD_DIR" ]; then
